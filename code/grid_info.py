@@ -5,8 +5,8 @@ import alphabet
 from geometry_utils import Orientation
 
 KEY_STUDENT_ID = "9999999999"
-GRID_HORIZONTAL_CELLS = 36
-GRID_VERTICAL_CELLS = 48
+GRID_HORIZONTAL_CELLS = 45
+GRID_VERTICAL_CELLS = 68
 
 
 class Field(enum.Enum):
@@ -75,7 +75,7 @@ class FormVariant():
         self.num_questions = len(questions)
 
 
-form_75q = FormVariant(
+form_90q = FormVariant(
     {
         Field.LAST_NAME:
         GridGroupInfo(1, 3, 12, fields_type=FieldType.LETTER),
@@ -94,12 +94,12 @@ form_75q = FormVariant(
                       field_length=6,
                       field_orientation=Orientation.HORIZONTAL)
     }, [
-        GridGroupInfo(2 + (7 * (i // 15)),
-                      32 + i - (15 * (i // 15)),
+        GridGroupInfo(3 + (7 * (i // 15)),
+                      48 + i - (15 * (i // 15)),
                       fields_type=FieldType.LETTER,
                       field_length=5,
                       field_orientation=Orientation.HORIZONTAL)
-        for i in range(75)
+        for i in range(90)
     ])
 
 form_150q = FormVariant(
@@ -125,5 +125,5 @@ form_150q = FormVariant(
 
 
 class dimensions:
-    vertical_cells = 36
-    horizontal_cells = 48
+    vertical_cells = 54
+    horizontal_cells = 72

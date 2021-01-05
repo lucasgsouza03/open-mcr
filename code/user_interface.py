@@ -218,7 +218,7 @@ class SelectWidget():
 
 
 class FormVariantSelection(enum.Enum):
-    VARIANT_75_Q = enum.auto()
+    VARIANT_90_Q = enum.auto()
     VARIANT_150_Q = enum.auto()
 
 
@@ -250,7 +250,7 @@ class InputFolderPickerWidget():
             container, "Save empty answers in questions as 'G'.",
             self.__on_update, True)
         self.__form_variant_picker = SelectWidget(
-            container, "Form Variant:", ["75 questions", "150 questions"],
+            container, "Form Variant:", ["90 questions", "150 questions"],
             self.__on_update)
 
         pack(container, fill=tk.X)
@@ -258,15 +258,15 @@ class InputFolderPickerWidget():
         self.folder = None
         self.multi_answers_as_f = False
         self.empty_answers_as_g = False
-        self.form_variant = FormVariantSelection.VARIANT_75_Q
+        self.form_variant = FormVariantSelection.VARIANT_90_Q
 
     def __on_update(self, *args: tp.Any):
         self.folder = self.__input_folder_picker.value
         self.multi_answers_as_f = self.__multi_answers_as_f_checkbox.value
         self.empty_answers_as_g = self.__empty_answers_as_g_checkbox.value
         selected_form_variant = self.__form_variant_picker.value
-        if (selected_form_variant == "75 questions"):
-            self.form_variant = FormVariantSelection.VARIANT_75_Q
+        if (selected_form_variant == "90 questions"):
+            self.form_variant = FormVariantSelection.VARIANT_90_Q
         elif (selected_form_variant == "150 questions"):
             self.form_variant = FormVariantSelection.VARIANT_150_Q
 
@@ -443,7 +443,7 @@ class MainWindow:
     keys_file: tp.Optional[Path]
     arrangement_map: tp.Optional[Path]
     sort_results: bool
-    debug_mode: bool = False
+    debug_mode: bool = True
     form_variant: FormVariantSelection
 
     def __init__(self):
@@ -515,8 +515,8 @@ class MainWindow:
                 new_status += f"✔ Input folder selected. {len(images)} image files found.\n"
 
         self.form_variant = self.__input_folder_picker.form_variant
-        if self.form_variant == FormVariantSelection.VARIANT_75_Q:
-            new_status += "Using 75-question form variant.\n"
+        if self.form_variant == FormVariantSelection.VARIANT_90_Q:
+            new_status += "Using 90-question form variant.\n"
         elif self.form_variant == FormVariantSelection.VARIANT_150_Q:
             new_status += "Using 150-question form variant.\n"
 
@@ -592,10 +592,10 @@ class MainWindow:
         subprocess.Popen([helpfile], shell=True)
 
     def __show_sheet(self):
-        if (self.form_variant == FormVariantSelection.VARIANT_75_Q):
+        if (self.form_variant == FormVariantSelection.VARIANT_90_Q):
             helpfile = str(
                 Path(__file__).parent / "assets" /
-                "multiple_choice_sheet_75q.pdf")
+                "multiple_choice_sheet_90q.pdf")
             subprocess.Popen([helpfile], shell=True)
         elif (self.form_variant == FormVariantSelection.VARIANT_150_Q):
             helpfile = str(

@@ -23,7 +23,7 @@ keys_file = user_input.keys_file
 arrangement_file = user_input.arrangement_map
 sort_results = user_input.sort_results
 debug_mode_on = user_input.debug_mode
-form_variant = grid_i.form_150q if user_input.form_variant == user_interface.FormVariantSelection.VARIANT_150_Q else grid_i.form_75q
+form_variant = grid_i.form_150q if user_input.form_variant == user_interface.FormVariantSelection.VARIANT_150_Q else grid_i.form_90q
 
 answers_results = data_exporting.OutputSheet([x for x in grid_i.Field],
                                              form_variant.num_questions)

@@ -35,7 +35,7 @@ def establish_key_dict(answer_keys: data_exporting.OutputSheet
     If these are wrong, the results will be incorrect.
 
     Also note: the returned list of answers matches the order of the questions,
-    but the questions are named "Q1" through "Q75" and the answers are in indexes
+    but the questions are named "Q1" through "Q90" and the answers are in indexes
     0 through 74.
     """
 
